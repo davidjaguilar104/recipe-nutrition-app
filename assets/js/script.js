@@ -35,7 +35,7 @@ var breweryFormSubmitHandler = function(event) {
 
     console.log(citySearched); // just for making sure user input is captured with listener
     
-    var breweryApiUrl = "https://api.openbrewerydb.org/breweries?by_city=" + citySearched + "";
+    var breweryApiUrl = "https://api.openbrewerydb.org/breweries?by_city=" + citySearched + "&per_page=3";
 
     fetch(breweryApiUrl) 
     .then(function(response) {
