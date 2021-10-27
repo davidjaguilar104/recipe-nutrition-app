@@ -1,3 +1,4 @@
+// start of food element variables and functions
 var userFormEl = document.getElementById("user-form");
 var foodInputEl = document.getElementById("food-search");
 
@@ -24,6 +25,9 @@ var formSubmitHandler = function(event) {
 };
 
 
+
+
+// start of brewery element variables and functions
 var userFormBreweryEl = document.getElementById("user-form-brewery"); 
 var cityInputEl = document.getElementById("city-search");
 
@@ -43,7 +47,7 @@ var breweryFormSubmitHandler = function(event) {
             console.log(response);
             response.json().then(function(data) {
                 console.log(data);
-
+                displayBreweryCard(data)
             });
         };
     });
@@ -51,7 +55,14 @@ var breweryFormSubmitHandler = function(event) {
 
 
 
-
+var displayBreweryCard = function(data) {
+    for(var i = 0; i < data.length; i++) {
+        var breweryData = {
+            breweryName: data[i].name
+        }
+        console.log(breweryData.breweryName);
+    }
+}
 
 
 
