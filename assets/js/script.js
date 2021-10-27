@@ -5,6 +5,7 @@ var formSubmitHandler = function(event) {
     event.preventDefault(); 
 
     var foodSearched = foodInputEl.value.trim();
+    foodInputEl.value = "";
 
     console.log(foodSearched);
     
