@@ -58,9 +58,12 @@ var breweryFormSubmitHandler = function(event) {
 var displayBreweryCard = function(data) {
     for(var i = 0; i < data.length; i++) {
         var breweryData = {
-            breweryName: data[i].name
+            breweryName: data[i].name,
+            breweryStreet: data[i].street,
+            breweryPhone: data[i].phone,
+            breweryWebsite: data[i].website_url
         }
-        console.log(breweryData.breweryName);
+        console.log(breweryData);
     }
 }
 
