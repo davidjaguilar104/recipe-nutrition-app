@@ -7,7 +7,7 @@ var formSubmitHandler = function(event) {
     var foodSearched = foodInputEl.value.trim();
     foodInputEl.value = "";
 
-    console.log(foodSearched);
+    console.log(foodSearched); // just for making sure user input is captured with listener
     
 }
 
