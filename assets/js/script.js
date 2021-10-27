@@ -9,7 +9,19 @@ var formSubmitHandler = function(event) {
 
     console.log(foodSearched); // just for making sure user input is captured with listener
     
-}
+    var recipeApiUrl = "https://api.edamam.com/api/recipes/v2?type=public&q=" + foodSearched + "&app_id=cb4a3930&app_key=84e841d5e80287f37c2ce654dc65c9d0";
+
+    fetch(recipeApiUrl) 
+    .then(function(response) {
+        if(response.ok) {
+            console.log(response);
+            response.json().then(function(data) {
+                console.log(data);
+
+            });
+        };
+    });
+};
 
 
 
