@@ -24,7 +24,30 @@ var formSubmitHandler = function(event) {
 };
 
 
+var userFormBreweryEl = document.getElementById("user-form-brewery"); 
+var cityInputEl = document.getElementById("city-search");
 
+var breweryFormSubmitHandler = function(event) {
+    event.preventDefault(); 
+
+    var citySearched = cityInputEl.value.trim();
+    cityInputEl.value = "";
+
+    console.log(citySearched); // just for making sure user input is captured with listener
+    
+    var breweryApiUrl = "https://api.openbrewerydb.org/breweries?by_city=" + citySearched + "";
+
+    fetch(breweryApiUrl) 
+    .then(function(response) {
+        if(response.ok) {
+            console.log(response);
+            response.json().then(function(data) {
+                console.log(data);
+
+            });
+        };
+    });
+};
 
 
 
@@ -56,3 +79,4 @@ var formSubmitHandler = function(event) {
 
 
 userFormEl.addEventListener("submit", formSubmitHandler);
+userFormBreweryEl.addEventListener("submit", breweryFormSubmitHandler);
