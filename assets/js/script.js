@@ -55,7 +55,4 @@ var formSubmitHandler = function(event) {
 
 
 
-
-
-
 userFormEl.addEventListener("submit", formSubmitHandler);
