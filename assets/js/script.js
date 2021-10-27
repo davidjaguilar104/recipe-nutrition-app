@@ -34,7 +34,6 @@ var breweryFormSubmitHandler = function(event) {
     var citySearched = cityInputEl.value.trim();
     cityInputEl.value = "";
     var typeSelected = breweryFilter.value;
-    console.log(typeSelected);
 
     console.log(citySearched); // just for making sure user input is captured with listener
     
