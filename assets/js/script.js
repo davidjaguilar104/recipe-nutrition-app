@@ -64,8 +64,22 @@ var displayBreweryCard = function(data) {
             breweryWebsite: data[i].website_url
         }
         console.log(breweryData);
-    }
-}
+    };
+
+    var placeHoldEl = document.getElementById("place-hold-brewery");
+    placeHoldEl.remove();
+    var cardContentEl = document.getElementById("card");
+    var cardTitleEl = document.createElement("p");
+    cardTitleEl.setAttribute("class", "title");
+    cardTitleEl.textContent = breweryData.breweryName;
+    var cardSubTitleEl = document.createElement("p");
+    cardSubTitleEl.setAttribute("class", "subtitle");
+    cardSubTitleEl.textContent = breweryData.breweryStreet;
+    cardContentEl.append(cardTitleEl, cardSubTitleEl);
+    
+};
+
+
 
 
 
