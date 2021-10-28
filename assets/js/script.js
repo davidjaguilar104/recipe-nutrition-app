@@ -24,7 +24,7 @@ var formSubmitHandler = function(event) {
     });
 };
 
-
+// IN THE DISPLAY CARDS A LOOP WILL BE BETTER THAN ALL THE REPEATED CODE
 
 var displayRecipeCard = function(data) {
   
@@ -102,7 +102,7 @@ var breweryFormSubmitHandler = function(event) {
     });
 };
 
-
+// IN THE DISPLAY CARDS A LOOP WILL BE BETTER THAN ALL THE REPEATED CODE
 
 var displayBreweryCard = function(data) {
   
