@@ -27,7 +27,6 @@ var formSubmitHandler = function(event) {
                 foodResults = data.hits
                 generateCards()
                 moreRecipes.classList.toggle("is-hidden")
-=======
                 console.log(data);
                 displayRecipeCard(data);
             });
