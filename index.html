@@ -21,6 +21,38 @@
     <form id="user-form" class="has-text-centered">
         <label for="food-search" class="is-size-2 has-text-black">Enter a food item and find a recipe: </label>
         <input id="food-search" type="text" placeholder="Enter a food item here" class="is-size-4 has-text-centered input mb-1"/>
+        <div class="select is-medium">
+            <select id="meal-type" name="meal-type">
+                <option value="">--Meal Type--</option>
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+                <option value="snack">Snack</option>
+            </select>
+        </div>
+        <div class="select is-medium">
+            <select id="cuisine-type" name="cuisine-type">
+                <option value="">--Cuisine Type--</option>
+                <option value="american">American</option>
+                <option value="asian">Asian</option>
+                <option value="british">British</option>
+                <option value="caribbean">Carribbean</option>
+                <option value="central-europe">Central Europe</option>
+                <option value="chinese">Chinese</option>
+                <option value="eastern-europe">Eastern Europe</option>
+                <option value="french">French</option>
+                <option value="indian">Indian</option>
+                <option value="italian">Italian</option>
+                <option value="japanese">Japanese</option>
+                <option value="kosher">Kosher</option>
+                <option value="mediterranean">Mediterranean</option>
+                <option value="mexican">Mexican</option>
+                <option value="middle-eastern">Middle Eastern</option>
+                <option value="nordic">Nordic</option>
+                <option value="south-american">South American</option>
+                <option value="south-east-asian">South East Asian</option>
+            </select>
+        </div>
         <button class="button button is-warning is-light is-size-5" type="submit">Find Recipe</button>
     </form>
 </section>

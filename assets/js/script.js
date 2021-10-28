@@ -1,6 +1,8 @@
 // start of food element variables and functions
 var userFormEl = document.getElementById("user-form");
 var foodInputEl = document.getElementById("food-search");
+var mealTypeSelect = document.getElementById("meal-type");
+var cuisineTypeSelect = document.getElementById("cuisine-type");
 
 var formSubmitHandler = function(event) {
     event.preventDefault(); 
@@ -8,9 +10,23 @@ var formSubmitHandler = function(event) {
     var foodSearched = foodInputEl.value.trim();
     foodInputEl.value = "";
 
+    var mealType = mealTypeSelect.value;
+    if (!mealType) {
+        var mealTypeQuery = "";
+    } else {
+        var mealTypeQuery = "&mealType=" + mealType;
+    }
+
+    var cuisineType = cuisineTypeSelect.value;
+    if (!cuisineType) {
+        var cuisineTypeQuery = "";
+    } else {
+        var cuisineTypeQuery = "&cuisineType=" + cuisineType;
+    }
+
     console.log(foodSearched); // just for making sure user input is captured with listener
     
-    var recipeApiUrl = "https://api.edamam.com/api/recipes/v2?type=public&q=" + foodSearched + "&app_id=cb4a3930&app_key=84e841d5e80287f37c2ce654dc65c9d0";
+    var recipeApiUrl = "https://api.edamam.com/api/recipes/v2?type=public&q=" + foodSearched + mealTypeQuery + cuisineTypeQuery + "&app_id=cb4a3930&app_key=84e841d5e80287f37c2ce654dc65c9d0";
 
     fetch(recipeApiUrl) 
     .then(function(response) {
