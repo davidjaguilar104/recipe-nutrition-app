@@ -58,28 +58,45 @@ var breweryFormSubmitHandler = function(event) {
 
 
 var displayBreweryCard = function(data) {
-    for(var i = 0; i < data.length; i++) {
-        var breweryData = {
-            breweryName: data[i].name,
-            breweryStreet: data[i].street,
-            breweryPhone: data[i].phone,
-            breweryWebsite: data[i].website_url
-        }
-        console.log(breweryData);
-    };
-
-// REMOVE FOR LOOP AND MAKE IT LIKE THE WEATHER DASHBOARD
-
+  
     var placeHoldEl = document.getElementById("place-hold-brewery");
-    placeHoldEl.remove();
     var cardContentEl = document.getElementById("card");
     var cardTitleEl = document.createElement("p");
     cardTitleEl.setAttribute("class", "title");
-    cardTitleEl.textContent = breweryData.breweryName;
+    cardTitleEl.textContent = data[0].name;
     var cardSubTitleEl = document.createElement("p");
     cardSubTitleEl.setAttribute("class", "subtitle");
-    cardSubTitleEl.textContent = breweryData.breweryStreet;
+    cardSubTitleEl.textContent = data[0].street;
     cardContentEl.append(cardTitleEl, cardSubTitleEl);
+    if(placeHoldEl) {
+        placeHoldEl.remove();
+    }
+
+    var placeHoldTwoEl = document.getElementById("place-hold-two-brewery");
+    var cardContentTwoEl = document.getElementById("card-two");
+    var cardTitleTwoEl = document.createElement("p");
+    cardTitleTwoEl.setAttribute("class", "title");
+    cardTitleTwoEl.textContent = data[1].name;
+    var cardSubTitleTwoEl = document.createElement("p");
+    cardSubTitleTwoEl.setAttribute("class", "subtitle");
+    cardSubTitleTwoEl.textContent = data[1].street;
+    cardContentTwoEl.append(cardTitleTwoEl, cardSubTitleTwoEl);
+    if(placeHoldTwoEl) {
+        placeHoldTwoEl.remove();
+    }
+
+    var placeHoldThreeEl = document.getElementById("place-hold-three-brewery");
+    var cardContentThreeEl = document.getElementById("card-three");
+    var cardTitleThreeEl = document.createElement("p");
+    cardTitleThreeEl.setAttribute("class", "title");
+    cardTitleThreeEl.textContent = data[2].name;
+    var cardSubTitleThreeEl = document.createElement("p");
+    cardSubTitleThreeEl.setAttribute("class", "subtitle");
+    cardSubTitleThreeEl.textContent = data[2].street;
+    cardContentThreeEl.append(cardTitleThreeEl, cardSubTitleThreeEl);
+    if(placeHoldThreeEl) {
+        placeHoldThreeEl.remove();
+    }
     
 };
 
