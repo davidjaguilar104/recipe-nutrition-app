@@ -68,6 +68,8 @@ var displayBreweryCard = function(data) {
         console.log(breweryData);
     };
 
+// REMOVE FOR LOOP AND MAKE IT LIKE THE WEATHER DASHBOARD
+
     var placeHoldEl = document.getElementById("place-hold-brewery");
     placeHoldEl.remove();
     var cardContentEl = document.getElementById("card");
