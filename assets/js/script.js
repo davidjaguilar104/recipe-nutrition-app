@@ -25,6 +25,7 @@ var formSubmitHandler = function(event) {
 };
 
 // IN THE DISPLAY CARDS A LOOP WILL BE BETTER THAN ALL THE REPEATED CODE
+// need to loop through data and display different object properties at different indexes of array returned from API
 
 var displayRecipeCard = function(data) {
   
@@ -103,6 +104,8 @@ var breweryFormSubmitHandler = function(event) {
 };
 
 // IN THE DISPLAY CARDS A LOOP WILL BE BETTER THAN ALL THE REPEATED CODE
+// need to loop through data and display different object properties at different indexes of array returned from API
+
 
 var displayBreweryCard = function(data) {
   
