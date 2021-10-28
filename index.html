@@ -33,6 +33,15 @@
     <form id="user-form-brewery" class="has-text-centered">
         <label for="city-search" class="is-size-2 has-text-black">Enter a city and find a brewery near you: </label>
         <input id="city-search" type="text" placeholder="Enter a city here" class="is-size-4 has-text-centered input mb-1"/>
+        <div class="select is-medium">
+            <select id="brewery-type" name="brewery-type">
+                <option value="">--Brewery Type--</option>
+                <option value="nano">Nano</option>
+                <option value="micro">Micro</option>
+                <option value="regional">Regional</option>
+                <option value="brewpub">Brewpub</option>
+            </select>
+        </div>
         <button class="button button is-warning is-light is-size-5" type="submit">Find Brewery</button>
     </form>
 </section>
