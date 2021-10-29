@@ -2,7 +2,7 @@
 var userFormEl = document.getElementById("user-form");
 var foodInputEl = document.getElementById("food-search");
 var moreRecipes = document.getElementById("moreRecipes")
-var foodResults = []
+var foodResults = [];
 var foodResultsIndex = 0 //tracks index of the foodResults array so we can add more cards onto the page
 var foodResultsCount = 3 //this tracks the amount of cards on the page
 
@@ -179,9 +179,9 @@ var displayBreweryCard = function(data) {
 
 
 moreRecipes.addEventListener("click", function(event) {
-    event.preventDefault()
-    console.log("click")
-generateCards()
-} )
+    event.preventDefault();
+    console.log(foodResultsIndex, foodResultsCount);
+generateCards();
+});
 userFormEl.addEventListener("submit", formSubmitHandler);
 userFormBreweryEl.addEventListener("submit", breweryFormSubmitHandler);
