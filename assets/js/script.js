@@ -1,6 +1,10 @@
 // start of food element variables and functions
 var userFormEl = document.getElementById("user-form");
 var foodInputEl = document.getElementById("food-search");
+var mealTypeSelect = document.getElementById("meal-type");
+var cuisineTypeSelect = document.getElementById("cuisine-type");
+var dietTypeSelect = document.getElementById("diet-type");
+var healthLabelSelect = document.getElementById("health-label");
 var moreRecipes = document.getElementById("moreRecipes")
 var foodResults = [];
 var foodResultsIndex = 0 //tracks index of the foodResults array so we can add more cards onto the page
@@ -13,10 +17,40 @@ var formSubmitHandler = function(event) {
 
     var foodSearched = foodInputEl.value.trim();
     foodInputEl.value = "";
-
-    console.log(foodSearched); // just for making sure user input is captured with listener
     
-    var recipeApiUrl = "https://api.edamam.com/api/recipes/v2?type=public&q=" + foodSearched + "&app_id=cb4a3930&app_key=84e841d5e80287f37c2ce654dc65c9d0";
+    console.log(foodSearched); // just for making sure user input is captured with listener
+
+    var mealType = mealTypeSelect.value;
+    if (!mealType) {
+        var mealTypeQuery = "";
+    } else {
+        var mealTypeQuery = "&mealType=" + mealType;
+    }
+
+    var cuisineType = cuisineTypeSelect.value;
+    if (!cuisineType) {
+        var cuisineTypeQuery = "";
+    } else {
+        var cuisineTypeQuery = "&cuisineType=" + cuisineType;
+    }
+
+    var dietType = dietTypeSelect.value;
+    if (!dietType) {
+        var dietQuery = "";
+    } else {
+        var dietQuery = "&diet=" + dietType;
+    }
+
+    var foodRestriction = healthLabelSelect.value;
+    if (!foodRestriction) {
+        var healthQuery = "";
+    } else {
+        var healthQuery = "&health=" + foodRestriction;
+    }
+
+
+
+    var recipeApiUrl = "https://api.edamam.com/api/recipes/v2?type=public&q=" + foodSearched + mealTypeQuery + cuisineTypeQuery + dietQuery + healthQuery + "&app_id=cb4a3930&app_key=84e841d5e80287f37c2ce654dc65c9d0";
 
     fetch(recipeApiUrl) 
     .then(function(response) {
