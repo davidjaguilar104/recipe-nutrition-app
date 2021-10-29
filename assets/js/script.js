@@ -5,6 +5,12 @@ var mealTypeSelect = document.getElementById("meal-type");
 var cuisineTypeSelect = document.getElementById("cuisine-type");
 var dietTypeSelect = document.getElementById("diet-type");
 var healthLabelSelect = document.getElementById("health-label");
+var moreRecipes = document.getElementById("moreRecipes")
+var foodResults = [];
+var foodResultsIndex = 0 //tracks index of the foodResults array so we can add more cards onto the page
+var foodResultsCount = 3 //this tracks the amount of cards on the page
+
+
 
 var formSubmitHandler = function(event) {
     event.preventDefault(); 
@@ -51,60 +57,55 @@ var formSubmitHandler = function(event) {
         if(response.ok) {
             console.log(response);
             response.json().then(function(data) {
-                console.log(data);
-                displayRecipeCard(data);
+
+                foodResults = data.hits
+                generateCards()
+                moreRecipes.classList.toggle("is-hidden")
             });
         };
     });
 };
 
-// IN THE DISPLAY CARDS A LOOP WILL BE BETTER THAN ALL THE REPEATED CODE
-// need to loop through data and display different object properties at different indexes of array returned from API
 
-var displayRecipeCard = function(data) {
-  
-    var placeHoldEl = document.getElementById("place-hold-rec");
-    var cardContentEl = document.getElementById("card-rec");
-    var cardTitleEl = document.createElement("p");
-    cardTitleEl.setAttribute("class", "title");
-    cardTitleEl.textContent = data.hits[0].recipe.label;
-    var cardSubTitleEl = document.createElement("p");
-    cardSubTitleEl.setAttribute("class", "subtitle");
-    cardSubTitleEl.textContent = data.hits[0].recipe.cuisineType;
-    cardContentEl.append(cardTitleEl, cardSubTitleEl);
-    if(placeHoldEl) {
-        placeHoldEl.remove();
+
+var generateCards = function() {
+    var resultsContainer = document.getElementById("recipeContainer")
+    if (foodResults.length) {
+        // loop over results and append HTML to results section
+        for(i=foodResultsIndex; i < foodResultsCount; i++){
+            //checking to make sure our index isn't higher than our array so we don't get blank cards
+            if (foodResults.length-1 >= i){
+                var food = foodResults[i].recipe
+                //https://developer.mozilla.org/en-US/docs/Web/API/DOMParser/parseFromString
+                var doc = new DOMParser()
+                var cardHTML = `
+                <div class="column is-one-third">
+                    <div class="card"
+                        <div class="card-image">
+                            <figure class="image middle-tile">
+                                <img src="${food.image}" alt="Picture of ${food.label}">
+                            </figure>
+                        </div>
+                    
+                        <div class="card-content">
+                            <p class="title">${food.label}</p>
+                            <a href="${food.url}" class="button">View Recipe</a>
+                        </div>
+                    </div>
+                </div>
+                `
+                var card = doc.parseFromString(cardHTML, "text/html")
+                resultsContainer.appendChild(card.body.firstChild)
+                foodResultsIndex++
+            }
+        }
+        foodResultsCount+=3
+    } else {
+        // append HTML with no results message to results section
+        resultsContainer.innerHTML = "<p class='has-text-centered'>No Results Found</p>"
     }
+}
 
-    // commented out below because it is still old code copied from displayBreweryCard()
-
-    // var placeHoldTwoEl = document.getElementById("place-hold-two-rec");
-    // var cardContentTwoEl = document.getElementById("card-rec-two");
-    // var cardTitleTwoEl = document.createElement("p");
-    // cardTitleTwoEl.setAttribute("class", "title");
-    // cardTitleTwoEl.textContent = data[1].name;
-    // var cardSubTitleTwoEl = document.createElement("p");
-    // cardSubTitleTwoEl.setAttribute("class", "subtitle");
-    // cardSubTitleTwoEl.textContent = data[1].street;
-    // cardContentTwoEl.append(cardTitleTwoEl, cardSubTitleTwoEl);
-    // if(placeHoldTwoEl) {
-    //     placeHoldTwoEl.remove();
-    // }
-
-    // var placeHoldThreeEl = document.getElementById("place-hold-three-rec");
-    // var cardContentThreeEl = document.getElementById("card-rec-three");
-    // var cardTitleThreeEl = document.createElement("p");
-    // cardTitleThreeEl.setAttribute("class", "title");
-    // cardTitleThreeEl.textContent = data[2].name;
-    // var cardSubTitleThreeEl = document.createElement("p");
-    // cardSubTitleThreeEl.setAttribute("class", "subtitle");
-    // cardSubTitleThreeEl.textContent = data[2].street;
-    // cardContentThreeEl.append(cardTitleThreeEl, cardSubTitleThreeEl);
-    // if(placeHoldThreeEl) {
-    //     placeHoldThreeEl.remove();
-    // }
-    
-};
 
 
 
@@ -210,6 +211,10 @@ var displayBreweryCard = function(data) {
 
 
 
-
+moreRecipes.addEventListener("click", function(event) {
+    event.preventDefault();
+    console.log(foodResultsIndex, foodResultsCount);
+generateCards();
+});
 userFormEl.addEventListener("submit", formSubmitHandler);
 userFormBreweryEl.addEventListener("submit", breweryFormSubmitHandler);
