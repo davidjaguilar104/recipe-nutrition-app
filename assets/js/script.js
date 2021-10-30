@@ -227,6 +227,24 @@ var displayBreweryCard = function(data) {
     imgArray[20] = new Image();
     imgArray[20].src = 'assets\images\roberta-keiko-kitahara-santana-RfL3l-I1zhc-unsplash (1).jpg';
 
+    //function code I found I don't know if it will work or not
+    function nextImage(element) {
+        var img = document.getElementById(element);
+        
+        for(var i = 0; i < imgArray.length; i++) {
+            
+            if(imgArray[i].src == img.src) {
+                
+                if(i === imgArray.length) {
+                    document.getElementById(element).src = imgArray[0].src;
+                    break;
+                }
+                document.getElementById(element).src = imgArray[i+1].src;
+                break;
+            }
+        }
+    }
+
 
 };
 
