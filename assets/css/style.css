@@ -5,3 +5,9 @@
 #three-breweries {
     height: 68vh;
 }
+
+#hero {
+    background-image: url("../images/elevate-snnhGYNqm44-unsplash.jpg");
+    background-size: cover;
+    height: 100vh;
+}
