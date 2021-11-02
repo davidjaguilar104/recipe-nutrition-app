@@ -127,11 +127,8 @@ var breweryFormSubmitHandler = function(event) {
     var breweryApiUrl = "https://api.openbrewerydb.org/breweries?by_city=" + citySearched + "&by_type=" + typeSelected;
 
     if(!typeSelected) {
-        var noBrewEl = document.getElementById("no-brew");
-        var pEl = document.createElement("p");
-
-        pEl.textContent = "You need to choose a brewery type or try a different option"
-        noBrewEl.appendChild(pEl);
+        
+        breweryApiUrl = "https://api.openbrewerydb.org/breweries?by_city=" + citySearched;
     };
 
     fetch(breweryApiUrl) 
