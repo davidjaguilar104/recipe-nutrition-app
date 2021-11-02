@@ -127,13 +127,19 @@ var breweryFormSubmitHandler = function(event) {
     
     var breweryApiUrl = "https://api.openbrewerydb.org/breweries?by_city=" + citySearched + "&by_type=" + typeSelected;
 
+    if(!typeSelected) {
+        
+        breweryApiUrl = "https://api.openbrewerydb.org/breweries?by_city=" + citySearched;
+    };
+
     fetch(breweryApiUrl) 
     .then(function(response) {
         if(response.ok) {
             console.log(response);
             response.json().then(function(data) {
                 console.log(data);
-                displayBreweryCard(data)
+                breweryResults = data
+                displayBreweryCard();
             });
         };
     });
@@ -142,46 +148,46 @@ var breweryFormSubmitHandler = function(event) {
 // IN THE DISPLAY CARDS A LOOP WILL BE BETTER THAN ALL THE REPEATED CODE
 // need to loop through data and display different object properties at different indexes of array returned from API
 
+var breweryResults = [];
+var breweryResultsIndex = 0 //tracks index of the breweryResults array so we can add more cards onto the page
+var breweryResultsCount = 3 //this tracks the amount of cards on the page
 
-var displayBreweryCard = function(data) {
-  
-    var placeHoldEl = document.getElementById("place-hold-brewery");
-    var cardContentEl = document.getElementById("card");
-    var cardTitleEl = document.createElement("p");
-    cardTitleEl.setAttribute("class", "title");
-    cardTitleEl.textContent = data[0].name;
-    var cardSubTitleEl = document.createElement("p");
-    cardSubTitleEl.setAttribute("class", "subtitle");
-    cardSubTitleEl.textContent = data[0].street;
-    cardContentEl.append(cardTitleEl, cardSubTitleEl);
-    if(placeHoldEl) {
-        placeHoldEl.remove();
-    }
+var displayBreweryCard = function() {
+    
 
-    var placeHoldTwoEl = document.getElementById("place-hold-two-brewery");
-    var cardContentTwoEl = document.getElementById("card-two");
-    var cardTitleTwoEl = document.createElement("p");
-    cardTitleTwoEl.setAttribute("class", "title");
-    cardTitleTwoEl.textContent = data[1].name;
-    var cardSubTitleTwoEl = document.createElement("p");
-    cardSubTitleTwoEl.setAttribute("class", "subtitle");
-    cardSubTitleTwoEl.textContent = data[1].street;
-    cardContentTwoEl.append(cardTitleTwoEl, cardSubTitleTwoEl);
-    if(placeHoldTwoEl) {
-        placeHoldTwoEl.remove();
-    }
-
-    var placeHoldThreeEl = document.getElementById("place-hold-three-brewery");
-    var cardContentThreeEl = document.getElementById("card-three");
-    var cardTitleThreeEl = document.createElement("p");
-    cardTitleThreeEl.setAttribute("class", "title");
-    cardTitleThreeEl.textContent = data[2].name;
-    var cardSubTitleThreeEl = document.createElement("p");
-    cardSubTitleThreeEl.setAttribute("class", "subtitle");
-    cardSubTitleThreeEl.textContent = data[2].street;
-    cardContentThreeEl.append(cardTitleThreeEl, cardSubTitleThreeEl);
-    if(placeHoldThreeEl) {
-        placeHoldThreeEl.remove();
+    var breweryContainer = document.getElementById("breweryContainer")
+    if (breweryResults.length) {
+        // loop over results and append HTML to results section
+        for(i=breweryResultsIndex; i < breweryResultsCount; i++){
+            //checking to make sure our index isn't higher than our array so we don't get blank cards
+            if (breweryResults.length-1 >= i){
+                var brewery = breweryResults[i]
+                console.log(brewery)
+                //https://developer.mozilla.org/en-US/docs/Web/API/DOMParser/parseFromString
+                var doc = new DOMParser()
+                var cardHTML = `
+                <div class="column is-one-third">
+                    <div class="card"
+                        <div class="card-content">
+                            <p class="title">${brewery.name}</p>
+                            <p class="sub-title">${brewery.street}</p>
+                            <p class="sub-title">${brewery.city}</p>
+                            <p class="sub-title">${brewery.state}</p>
+                            <p class="sub-title">${brewery.postal_code}</p>
+                            <a href="${brewery.website_url}" class="button">View Website</a>
+                        </div>
+                    </div>
+                </div>
+                `
+                var card = doc.parseFromString(cardHTML, "text/html");
+                breweryContainer.appendChild(card.body.firstChild);
+                breweryResultsIndex++;
+            }
+        }
+        breweryResultsCount+=3
+    } else {
+        // append HTML with no results message to results section
+        breweryContainer.innerHTML = "<p class='has-text-centered'>No Results Found</p>"
     }
     
 };
