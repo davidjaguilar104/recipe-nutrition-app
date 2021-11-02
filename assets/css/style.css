@@ -1,13 +1,36 @@
 #three-recipes {
-    height: 68vh;
+  height: 68vh;
 }
 
 #three-breweries {
-    height: 68vh;
+  height: 68vh;
 }
 
 #hero {
-    background-image: url("../images/elevate-snnhGYNqm44-unsplash.jpg");
-    background-size: cover;
-    height: 100vh;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(163, 111, 111, 0.5)
+    ),
+    url("../images/elevate-snnhGYNqm44-unsplash.jpg");
+  background-size: cover;
+  height: 100vh;
+  text-align: center;
+}
+
+body {
+  font-family: "Pathway Gothic One", sans-serif;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: white;
+  padding: 0 1rem;
+}
+
+header p {
+  font-size: 25px;
 }
