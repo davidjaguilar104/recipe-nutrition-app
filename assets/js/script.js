@@ -57,7 +57,6 @@ var formSubmitHandler = function(event) {
         if(response.ok) {
             console.log(response);
             response.json().then(function(data) {
-
                 foodResults = data.hits
                 generateCards()
                 moreRecipes.classList.toggle("is-hidden")
@@ -65,7 +64,6 @@ var formSubmitHandler = function(event) {
         };
     });
 };
-
 
 
 var generateCards = function() {
@@ -105,6 +103,9 @@ var generateCards = function() {
         resultsContainer.innerHTML = "<p class='has-text-centered'>No Results Found</p>"
     }
 }
+
+
+
 
 
 
