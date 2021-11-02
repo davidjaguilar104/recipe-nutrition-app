@@ -9,12 +9,19 @@
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Recipe-Nutrition-App</title>
+
+    <title>Stew and Brew</title>
   </head>
   <body>
     <!-- header section -->
+    <p
+      class="has-text-black has-text-centered is-size-1 has-background-primary"
+    >
+      Stew and Brew
+    </p>
     <section
-      class="is-flex is-justify-content-center has-background-grey-light"
+      id="hero"
+      class="is-flex is-flex-direction-column is-justify-content-center"
     >
       <p class="has-text-white has-text-centered is-size-1">
         Find great food recipes and local breweries!
@@ -170,28 +177,17 @@
       </form>
     </section>
 
+    <div id="no-brew"></div>
+
     <!-- three breweries section -->
-    <section class="columns">
-      <div class="card column is-one-third">
-        <div class="card-content" id="card">
-          <p id="place-hold-brewery" class="is-size-4">
-            Search a city and select a brewery type!
-          </p>
-        </div>
+    <section>
+      <div class="columns d-flex is-flex-wrap-wrap" id="breweryContainer">
+        <!--recipes dynamically generated here-->
       </div>
-      <div class="card column is-one-third">
-        <div class="card-content" id="card-two">
-          <p id="place-hold-two-brewery" class="is-size-4">
-            Search a city and select a brewery type!
-          </p>
-        </div>
-      </div>
-      <div class="card column is-one-third">
-        <div class="card-content" id="card-three">
-          <p id="place-hold-three-brewery" class="is-size-4">
-            Search a city and select a brewery type!
-          </p>
-        </div>
+      <div class="has-text-centered">
+        <button id="moreBreweries" class="button is-ghost is-hidden">
+          More Breweries..
+        </button>
       </div>
     </section>
 
