@@ -34,3 +34,7 @@ header {
 header p {
   font-size: 25px;
 }
+
+.columns {
+  margin-left: 0.25rem !important;
+}

@@ -158,6 +158,7 @@ var displayBreweryCard = function() {
     
 
     var breweryContainer = document.getElementById("breweryContainer")
+    breweryContainer.innerHTML = "";
     if (breweryResults.length) {
         // loop over results and append HTML to results section
         for(i=breweryResultsIndex; i < breweryResultsCount; i++){
@@ -189,7 +190,8 @@ var displayBreweryCard = function() {
         breweryResultsCount+=3
     } else {
         // append HTML with no results message to results section
-        breweryContainer.innerHTML = "<p class='has-text-centered'>No Results Found</p>"
+        breweryContainer.innerHTML = "<p class='has-text-centered is-size-1'>No Results Found</p>";
+        moreDrinks.classList.toggle("is-hidden");
     }
     
 };
