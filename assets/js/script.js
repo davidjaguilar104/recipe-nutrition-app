@@ -202,24 +202,6 @@ var displayBreweryCard = function() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 moreRecipes.addEventListener("click", function(event) {
     event.preventDefault();
     console.log(foodResultsIndex, foodResultsCount);
