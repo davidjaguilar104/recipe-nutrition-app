@@ -115,6 +115,7 @@ var generateCards = function() {
 var userFormBreweryEl = document.getElementById("user-form-brewery"); 
 var cityInputEl = document.getElementById("city-search");
 var breweryFilter = document.getElementById("brewery-type");
+var moreDrinks = document.getElementById("moreDrinks");
 
 var breweryFormSubmitHandler = function(event) {
     event.preventDefault(); 
@@ -138,7 +139,8 @@ var breweryFormSubmitHandler = function(event) {
             console.log(response);
             response.json().then(function(data) {
                 console.log(data);
-                breweryResults = data
+                moreDrinks.classList.toggle("is-hidden")
+                breweryResults = data;
                 displayBreweryCard();
             });
         };
@@ -200,28 +202,17 @@ var displayBreweryCard = function() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 moreRecipes.addEventListener("click", function(event) {
     event.preventDefault();
     console.log(foodResultsIndex, foodResultsCount);
 generateCards();
 });
+
+moreDrinks.addEventListener("click", function(event){
+    event.preventDefault();
+    console.log(breweryResultsIndex, breweryResultsCount);
+    displayBreweryCard();
+});
+
 userFormEl.addEventListener("submit", formSubmitHandler);
 userFormBreweryEl.addEventListener("submit", breweryFormSubmitHandler);
