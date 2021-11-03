@@ -57,7 +57,7 @@ var formSubmitHandler = function(event) {
         if(response.ok) {
             console.log(response);
             response.json().then(function(data) {
-
+                console.log(data);
                 foodResults = data.hits
                 generateCards()
                 moreRecipes.classList.toggle("is-hidden")
@@ -114,6 +114,10 @@ var generateCards = function() {
 var userFormBreweryEl = document.getElementById("user-form-brewery"); 
 var cityInputEl = document.getElementById("city-search");
 var breweryFilter = document.getElementById("brewery-type");
+var moreDrinks = document.getElementById("moreDrinks");
+var beerResults = [];
+var drinkResultsIndex = 0 //tracks index of the beerResults array so we can add more cards onto the page
+var drinkResultsCount = 3
 
 var breweryFormSubmitHandler = function(event) {
     event.preventDefault(); 
@@ -132,129 +136,107 @@ var breweryFormSubmitHandler = function(event) {
             console.log(response);
             response.json().then(function(data) {
                 console.log(data);
-                displayBreweryCard(data)
+                beerResults = data.hits
+                displayBreweryCard()
+                moreDrinks.classList.toggle("is-hidden")
             });
         };
     });
 };
 
-// IN THE DISPLAY CARDS A LOOP WILL BE BETTER THAN ALL THE REPEATED CODE
-// need to loop through data and display different object properties at different indexes of array returned from API
 
+var displayBreweryCard = function() {
 
-var displayBreweryCard = function(data) {
-  
-    var placeHoldEl = document.getElementById("place-hold-brewery");
-    var cardContentEl = document.getElementById("card");
-    var cardTitleEl = document.createElement("p");
-    cardTitleEl.setAttribute("class", "title");
-    cardTitleEl.textContent = data[0].name;
-    var cardSubTitleEl = document.createElement("p");
-    cardSubTitleEl.setAttribute("class", "subtitle");
-    cardSubTitleEl.textContent = data[0].street;
-    cardContentEl.append(cardTitleEl, cardSubTitleEl);
-    if(placeHoldEl) {
-        placeHoldEl.remove();
-    }
-
-    var placeHoldTwoEl = document.getElementById("place-hold-two-brewery");
-    var cardContentTwoEl = document.getElementById("card-two");
-    var cardTitleTwoEl = document.createElement("p");
-    cardTitleTwoEl.setAttribute("class", "title");
-    cardTitleTwoEl.textContent = data[1].name;
-    var cardSubTitleTwoEl = document.createElement("p");
-    cardSubTitleTwoEl.setAttribute("class", "subtitle");
-    cardSubTitleTwoEl.textContent = data[1].street;
-    cardContentTwoEl.append(cardTitleTwoEl, cardSubTitleTwoEl);
-    if(placeHoldTwoEl) {
-        placeHoldTwoEl.remove();
-    }
-
-    var placeHoldThreeEl = document.getElementById("place-hold-three-brewery");
-    var cardContentThreeEl = document.getElementById("card-three");
-    var cardTitleThreeEl = document.createElement("p");
-    cardTitleThreeEl.setAttribute("class", "title");
-    cardTitleThreeEl.textContent = data[2].name;
-    var cardSubTitleThreeEl = document.createElement("p");
-    cardSubTitleThreeEl.setAttribute("class", "subtitle");
-    cardSubTitleThreeEl.textContent = data[2].street;
-    cardContentThreeEl.append(cardTitleThreeEl, cardSubTitleThreeEl);
-    if(placeHoldThreeEl) {
-        placeHoldThreeEl.remove();
-    }
-    
-    var imgArray = new Array();
-    imgArray[0] = new Image();
-    imgArray[0].src = 'assets\images\carlos-blanco-WzPdP9pn7go-unsplash_2.jpg';
-    imgArray[1] = new Image();
-    imgArray[1].src = 'assets\images\drew-farwell-9RLk3ZpulUk-unsplash (1).jpg';
-    imgArray[2] = new Image();
-    imgArray[2].src = 'assets\images\elevate-8LlEY7DEvWo-unsplash (1).jpg';
-    imgArray[3] = new Image();
-    imgArray[3].src = 'assets\images\elevate-Cdq3ziSoeGY-unsplash_2.jpg';
-    imgArray[4] = new Image();
-    imgArray[4].src = 'assets\images\elevate-KJzrLIfq2Zo-unsplash (1).jpg';
-    imgArray[5] = new Image();
-    imgArray[5].src = 'assets\images\fred-moon-0yqa0rMCsYk-unsplash (1).jpg';
-    imgArray[6] = new Image();
-    imgArray[6].src = 'assets\images\iwona-castiello-d-antonio-PPlopyFtwFM-unsplash (1).jpg';
-    imgArray[7] = new Image();
-    imgArray[7].src = 'assets\images\jesse-martini-LnGUREkDuAM-unsplash (1).jpg';
-    imgArray[8] = new Image();
-    imgArray[8].src = 'assets\images\jim-harris-zDlusnb3G3Q-unsplash_2.jpg';    
-    imgArray[9] = new Image();
-    imgArray[9].src = 'assets\images\josh-olalde-5PGp5nDOKxI-unsplash_2.jpg';
-    imgArray[10] = new Image();
-    imgArray[10].src = 'assets\images\katherine-conrad-QL3SaEwio_k-unsplash (1).jpg';
-    imgArray[11] = new Image();
-    imgArray[11].src = 'assets\images\kevin-kristhian-29zMpabSkXo-unsplash (1).jpg';
-    imgArray[12] = new Image();
-    imgArray[12].src = 'assets\images\louis-hansel-WCm4dFvZnMM-unsplash_1.jpg';
-    imgArray[13] = new Image();
-    imgArray[13].src = 'assets\images\marco-montero-pisani-5qTxX7nicco-unsplash_2.jpg';
-    imgArray[14] = new Image();
-    imgArray[14].src = 'assets\images\martin-knize-DQpHtE5WY-U-unsplash.jpg';
-    imgArray[15] = new Image();
-    imgArray[15].src = 'assets\images\meritt-thomas-2UsNF4Az-Ko-unsplash_1.jpg';
-    imgArray[16] = new Image();
-    imgArray[16].src = 'assets\images\meritt-thomas-OGTEP0LyYNk-unsplash (1).jpg';
-    imgArray[17] = new Image();
-    imgArray[17].src = 'assets\images\meritt-thomas-OGTEP0LyYNk-unsplash_1.jpg';
-    imgArray[18] = new Image();
-    imgArray[18].src = 'assets\images\miguel-angel-cardona-jr-yFHJga68toQ-unsplash_2.jpg';
-    imgArray[19] = new Image();
-    imgArray[19].src = 'assets\images\nick-hillier-xBXF9pr6LQo-unsplash_1.jpg';
-    imgArray[20] = new Image();
-    imgArray[20].src = 'assets\images\roberta-keiko-kitahara-santana-RfL3l-I1zhc-unsplash (1).jpg';
-
-    //function code I found I don't know if it will work or not
-    function nextImage(element) {
-        var img = document.getElementById(element);
-        
-        for(var i = 0; i < imgArray.length; i++) {
-            
-            if(imgArray[i].src == img.src) {
-                
-                if(i === imgArray.length) {
-                    document.getElementById(element).src = imgArray[0].src;
-                    break;
-                }
-                document.getElementById(element).src = imgArray[i+1].src;
-                break;
+    var beerContainer = document.getElementById("beer")
+    if (beerResults.length) {
+        // loop over results and append HTML to results section
+        for(i=drinkResultsIndex; i < drinkResultsCount; i++){
+            //checking to make sure our index isn't higher than our array so we don't get blank cards
+            if (beerResults.length-1 >= i){
+                var beerDrink = beerResults[i].brewery
+                //https://developer.mozilla.org/en-US/docs/Web/API/DOMParser/parseFromString
+                var doc = new DOMParser()
+                var cardHTML = `
+                <div class="column is-one-third">
+                    <div class="drink-card">
+                        <div class="card-image">
+                            <figure class="image middle-tile">
+                            </figure>
+                        </div>
+                    
+                        <div class="card-content">
+                            <p class="title">${beerDrink.name}</p>
+                            <p>${beerDrink.street}</p>
+                        </div>
+                    </div>
+                </div>
+                `
+                var card = doc.parseFromString(cardHTML, "text/html")
+                beerContainer.appendChild(card.body.firstChild)
+                drinkResultsIndex++
             }
         }
+        drinkResultsCount+=3
+    } else {
+        // append HTML with no results message to results section
+        beerContainer.innerHTML = "<p class='has-text-centered'>No Results Found</p>"
+    }
+  
+    //function code I found I don't know if it will work or not
+    function nextImage() {
+        var imageCard = document.getElementById("drink-card");
+        var imgArray = new Array(20);
+    imgArray[0] = new Image();
+    imgArray[0].src = 'assets/images/carlos-blanco-WzPdP9pn7go-unsplash_2.jpg';
+    imgArray[1] = new Image();
+    imgArray[1].src = 'assets/images/drew-farwell-9RLk3ZpulUk-unsplash (1).jpg';
+    imgArray[2] = new Image();
+    imgArray[2].src = 'assets/images/elevate-8LlEY7DEvWo-unsplash (1).jpg';
+    imgArray[3] = new Image();
+    imgArray[3].src = 'assets/images/elevate-Cdq3ziSoeGY-unsplash_2.jpg';
+    imgArray[4] = new Image();
+    imgArray[4].src = 'assets/images/elevate-KJzrLIfq2Zo-unsplash (1).jpg';
+    imgArray[5] = new Image();
+    imgArray[5].src = 'assets/images/fred-moon-0yqa0rMCsYk-unsplash (1).jpg';
+    imgArray[6] = new Image();
+    imgArray[6].src = 'assets/images/iwona-castiello-d-antonio-PPlopyFtwFM-unsplash (1).jpg';
+    imgArray[7] = new Image();
+    imgArray[7].src = 'assets/images/jesse-martini-LnGUREkDuAM-unsplash (1).jpg';
+    imgArray[8] = new Image();
+    imgArray[8].src = 'assets/images/jim-harris-zDlusnb3G3Q-unsplash_2.jpg';    
+    imgArray[9] = new Image();
+    imgArray[9].src = 'assets/images/josh-olalde-5PGp5nDOKxI-unsplash_2.jpg';
+    imgArray[10] = new Image();
+    imgArray[10].src = 'assets/images/katherine-conrad-QL3SaEwio_k-unsplash (1).jpg';
+    imgArray[11] = new Image();
+    imgArray[11].src = 'assets/images/kevin-kristhian-29zMpabSkXo-unsplash (1).jpg';
+    imgArray[12] = new Image();
+    imgArray[12].src = 'assets/images/louis-hansel-WCm4dFvZnMM-unsplash_1.jpg';
+    imgArray[13] = new Image();
+    imgArray[13].src = 'assets/images/marco-montero-pisani-5qTxX7nicco-unsplash_2.jpg';
+    imgArray[14] = new Image();
+    imgArray[14].src = 'assets/images/martin-knize-DQpHtE5WY-U-unsplash.jpg';
+    imgArray[15] = new Image();
+    imgArray[15].src = 'assets/images/meritt-thomas-2UsNF4Az-Ko-unsplash_1.jpg';
+    imgArray[16] = new Image();
+    imgArray[16].src = 'assets/images/meritt-thomas-OGTEP0LyYNk-unsplash (1).jpg';
+    imgArray[17] = new Image();
+    imgArray[17].src = 'assets/images/meritt-thomas-OGTEP0LyYNk-unsplash_1.jpg';
+    imgArray[18] = new Image();
+    imgArray[18].src = 'assets/images/miguel-angel-cardona-jr-yFHJga68toQ-unsplash_2.jpg';
+    imgArray[19] = new Image();
+    imgArray[19].src = 'assets/images/nick-hillier-xBXF9pr6LQo-unsplash_1.jpg';
+    imgArray[20] = new Image();
+    imgArray[20].src = 'assets/images/roberta-keiko-kitahara-santana-RfL3l-I1zhc-unsplash (1).jpg';
+       
+    for(var i = 0; i < imgArray.length; i++) {
+            drinkCard.appendChild(imgArray[i]);
+        }
+        console.log(drinkCard);
     }
 
 
 };
-
-
-
-
-
-
-
-
 
 
 
@@ -279,5 +261,12 @@ moreRecipes.addEventListener("click", function(event) {
     console.log(foodResultsIndex, foodResultsCount);
 generateCards();
 });
+
+moreDrinks.addEventListener("click", function(event){
+    event.preventDefault();
+    console.log(drinkResultsIndex, drinkResultsCount);
+    displayBreweryCard();
+});
+
 userFormEl.addEventListener("submit", formSubmitHandler);
 userFormBreweryEl.addEventListener("submit", breweryFormSubmitHandler);
