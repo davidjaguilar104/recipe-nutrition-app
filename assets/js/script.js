@@ -139,6 +139,7 @@ var breweryFormSubmitHandler = function(event) {
             console.log(response);
             response.json().then(function(data) {
                 console.log(data);
+                breweryContainer.innerHTML = "";
                 moreDrinks.classList.toggle("is-hidden")
                 breweryResults = data;
                 displayBreweryCard();
@@ -157,8 +158,8 @@ var breweryResultsCount = 3 //this tracks the amount of cards on the page
 var displayBreweryCard = function() {
     
 
-    var breweryContainer = document.getElementById("breweryContainer")
-    breweryContainer.innerHTML = "";
+    var breweryContainer = document.getElementById("breweryContainer");
+    // breweryContainer.innerHTML = "";
     if (breweryResults.length) {
         // loop over results and append HTML to results section
         for(i=breweryResultsIndex; i < breweryResultsCount; i++){
@@ -190,7 +191,10 @@ var displayBreweryCard = function() {
         breweryResultsCount+=3
     } else {
         // append HTML with no results message to results section
-        breweryContainer.innerHTML = "<p class='has-text-centered is-size-1'>No Results Found</p>";
+        var noResultsEl = document.createElement("p");
+        noResultsEl.setAttribute("class", "is-size-1");
+        noResultsEl.textContent = "No results found. Try again.";
+        breweryContainer.appendChild(noResultsEl);
         moreDrinks.classList.toggle("is-hidden");
     }
     
