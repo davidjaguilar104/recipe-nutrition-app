@@ -167,7 +167,7 @@ var displayBreweryCard = function() {
                 var doc = new DOMParser()
                 var cardHTML = `
                 <div class="column is-one-third">
-                    <div class="card"
+                    <div class="card" id="drink-card">
                         <div class="card-content">
                             <p class="title">${brewery.name}</p>
                             <p class="sub-title">${brewery.street}</p>
@@ -189,62 +189,63 @@ var displayBreweryCard = function() {
         // append HTML with no results message to results section
         breweryContainer.innerHTML = "<p class='has-text-centered'>No Results Found</p>"
     }
+
     
-};
-
-
-
-function nextImage() {
-    var imageCard = document.getElementById("drink-card");
-    var imgArray = new Array(20);
-imgArray[0] = new Image();
-imgArray[0].src = 'assets/images/carlos-blanco-WzPdP9pn7go-unsplash_2.jpg';
-imgArray[1] = new Image();
-imgArray[1].src = 'assets/images/drew-farwell-9RLk3ZpulUk-unsplash (1).jpg';
-imgArray[2] = new Image();
-imgArray[2].src = 'assets/images/elevate-8LlEY7DEvWo-unsplash (1).jpg';
-imgArray[3] = new Image();
-imgArray[3].src = 'assets/images/elevate-Cdq3ziSoeGY-unsplash_2.jpg';
-imgArray[4] = new Image();
-imgArray[4].src = 'assets/images/elevate-KJzrLIfq2Zo-unsplash (1).jpg';
-imgArray[5] = new Image();
-imgArray[5].src = 'assets/images/fred-moon-0yqa0rMCsYk-unsplash (1).jpg';
-imgArray[6] = new Image();
-imgArray[6].src = 'assets/images/iwona-castiello-d-antonio-PPlopyFtwFM-unsplash (1).jpg';
-imgArray[7] = new Image();
-imgArray[7].src = 'assets/images/jesse-martini-LnGUREkDuAM-unsplash (1).jpg';
-imgArray[8] = new Image();
-imgArray[8].src = 'assets/images/jim-harris-zDlusnb3G3Q-unsplash_2.jpg';    
-imgArray[9] = new Image();
-imgArray[9].src = 'assets/images/josh-olalde-5PGp5nDOKxI-unsplash_2.jpg';
-imgArray[10] = new Image();
-imgArray[10].src = 'assets/images/katherine-conrad-QL3SaEwio_k-unsplash (1).jpg';
-imgArray[11] = new Image();
-imgArray[11].src = 'assets/images/kevin-kristhian-29zMpabSkXo-unsplash (1).jpg';
-imgArray[12] = new Image();
-imgArray[12].src = 'assets/images/louis-hansel-WCm4dFvZnMM-unsplash_1.jpg';
-imgArray[13] = new Image();
-imgArray[13].src = 'assets/images/marco-montero-pisani-5qTxX7nicco-unsplash_2.jpg';
-imgArray[14] = new Image();
-imgArray[14].src = 'assets/images/martin-knize-DQpHtE5WY-U-unsplash.jpg';
-imgArray[15] = new Image();
-imgArray[15].src = 'assets/images/meritt-thomas-2UsNF4Az-Ko-unsplash_1.jpg';
-imgArray[16] = new Image();
-imgArray[16].src = 'assets/images/meritt-thomas-OGTEP0LyYNk-unsplash (1).jpg';
-imgArray[17] = new Image();
-imgArray[17].src = 'assets/images/meritt-thomas-OGTEP0LyYNk-unsplash_1.jpg';
-imgArray[18] = new Image();
-imgArray[18].src = 'assets/images/miguel-angel-cardona-jr-yFHJga68toQ-unsplash_2.jpg';
-imgArray[19] = new Image();
-imgArray[19].src = 'assets/images/nick-hillier-xBXF9pr6LQo-unsplash_1.jpg';
-imgArray[20] = new Image();
-imgArray[20].src = 'assets/images/roberta-keiko-kitahara-santana-RfL3l-I1zhc-unsplash (1).jpg';
-   
-for(var i = 0; i < imgArray.length; i++) {
-        drinkCard.appendChild(imgArray[i]);
+    function nextImage() {
+        var imageCard = document.getElementById("drink-card");
+        var imgArray = new Array(20);
+    imgArray[0] = new Image();
+    imgArray[0].src = 'assets/images/carlos-blanco-WzPdP9pn7go-unsplash_2.jpg';
+    imgArray[1] = new Image();
+    imgArray[1].src = 'assets/images/drew-farwell-9RLk3ZpulUk-unsplash (1).jpg';
+    imgArray[2] = new Image();
+    imgArray[2].src = 'assets/images/elevate-8LlEY7DEvWo-unsplash (1).jpg';
+    imgArray[3] = new Image();
+    imgArray[3].src = 'assets/images/elevate-Cdq3ziSoeGY-unsplash_2.jpg';
+    imgArray[4] = new Image();
+    imgArray[4].src = 'assets/images/elevate-KJzrLIfq2Zo-unsplash (1).jpg';
+    imgArray[5] = new Image();
+    imgArray[5].src = 'assets/images/fred-moon-0yqa0rMCsYk-unsplash (1).jpg';
+    imgArray[6] = new Image();
+    imgArray[6].src = 'assets/images/iwona-castiello-d-antonio-PPlopyFtwFM-unsplash (1).jpg';
+    imgArray[7] = new Image();
+    imgArray[7].src = 'assets/images/jesse-martini-LnGUREkDuAM-unsplash (1).jpg';
+    imgArray[8] = new Image();
+    imgArray[8].src = 'assets/images/jim-harris-zDlusnb3G3Q-unsplash_2.jpg';    
+    imgArray[9] = new Image();
+    imgArray[9].src = 'assets/images/josh-olalde-5PGp5nDOKxI-unsplash_2.jpg';
+    imgArray[10] = new Image();
+    imgArray[10].src = 'assets/images/katherine-conrad-QL3SaEwio_k-unsplash (1).jpg';
+    imgArray[11] = new Image();
+    imgArray[11].src = 'assets/images/kevin-kristhian-29zMpabSkXo-unsplash (1).jpg';
+    imgArray[12] = new Image();
+    imgArray[12].src = 'assets/images/louis-hansel-WCm4dFvZnMM-unsplash_1.jpg';
+    imgArray[13] = new Image();
+    imgArray[13].src = 'assets/images/marco-montero-pisani-5qTxX7nicco-unsplash_2.jpg';
+    imgArray[14] = new Image();
+    imgArray[14].src = 'assets/images/martin-knize-DQpHtE5WY-U-unsplash.jpg';
+    imgArray[15] = new Image();
+    imgArray[15].src = 'assets/images/meritt-thomas-2UsNF4Az-Ko-unsplash_1.jpg';
+    imgArray[16] = new Image();
+    imgArray[16].src = 'assets/images/meritt-thomas-OGTEP0LyYNk-unsplash (1).jpg';
+    imgArray[17] = new Image();
+    imgArray[17].src = 'assets/images/meritt-thomas-OGTEP0LyYNk-unsplash_1.jpg';
+    imgArray[18] = new Image();
+    imgArray[18].src = 'assets/images/miguel-angel-cardona-jr-yFHJga68toQ-unsplash_2.jpg';
+    imgArray[19] = new Image();
+    imgArray[19].src = 'assets/images/nick-hillier-xBXF9pr6LQo-unsplash_1.jpg';
+    imgArray[20] = new Image();
+    imgArray[20].src = 'assets/images/roberta-keiko-kitahara-santana-RfL3l-I1zhc-unsplash (1).jpg';
+       
+    for(var i = 0; i < imgArray.length; i++) {
+            drinkCard.appendChild(imgArray[i]);
+        }
+        console.log(drinkCard);
     }
-    console.log(drinkCard);
-}
+
+nextImage();
+
+};
 
 
 
