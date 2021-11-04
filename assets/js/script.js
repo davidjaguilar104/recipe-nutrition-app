@@ -233,59 +233,6 @@ var updateRecipeList = function() {
 
 modalBtn.onclick = function() {
     modal.style.display = "block";
-};
-
-closeModal.onclick = function() {
-    modal.style.display = "none";
-};
-
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    };
-};
-
-var saveRecipeHandler = function() {
-    localStorage.setItem("savedRecipes", JSON.stringify(savedRecipes));
-    updateRecipeList();
-};
-
-var loadRecipes = function() {
-    var loadedRecipes = JSON.parse(localStorage.getItem("savedRecipes"));
-    if (!loadedRecipes) {
-        return false;
-    } else {
-    savedRecipes = loadedRecipes;
-    };
-    updateRecipeList();
-};
-
-loadRecipes();
-
-document.addEventListener("click", function(event) {
-    if (event.target && event.target.id === "save-btn") {
-        var savedRecipe = event.target.parentNode.innerHTML;
-        var title = savedRecipe.substring(
-            savedRecipe.indexOf(">") + 1,
-            savedRecipe.lastIndexOf("</p>")
-        );
-        var link = savedRecipe.substring(
-            savedRecipe.indexOf('href="') + 6,
-            savedRecipe.lastIndexOf('" class="button recipe')
-        )
-        var clickedRecipe = {
-            recipe: title,
-            website: link
-        }
-        savedRecipes.push(clickedRecipe);
-        saveRecipeHandler();
-    }
-
-});
-
-
-modalBtn.onclick = function() {
-    modal.style.display = "block";
     updateRecipeList();
 };
 
