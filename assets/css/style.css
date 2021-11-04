@@ -43,3 +43,10 @@ header p {
   font-size: 25px;
 }
 
+#saved-recipes {
+  font-family: "Pathway Gothic One", sans-serif;
+}
+
+.save-btn {
+  font-family: "Pathway Gothic One", sans-serif;
+}

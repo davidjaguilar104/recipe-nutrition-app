@@ -20,9 +20,10 @@
   </head>
   <body>
     <!-- header section -->
-    <header>
+    <header class="is-flex is-justify-content-space-between">
       <h1 class="is-size-1">Stew and Brew</h1>
       <p class="has-text-black">Find great food recipes and local breweries!</p>
+      <button id="saved-recipes" class="button">Saved Recipes</button>
     </header>
     <!--hero-->
     <section
@@ -189,6 +190,24 @@
         </button>
       </div>
     </section>
+
+
+    <div id="saved-recipe-modal" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Saved Recipes</p>
+        </header>
+        <section class="modal-card-body">
+          <ul id="saved-recipe-list">
+          </ul>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button close">Close</button>
+        </footer>
+      </div>
+    </div>
+
 
     <script src="./assets/js/script.js"></script>
   </body>
