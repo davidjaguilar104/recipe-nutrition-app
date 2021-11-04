@@ -8,7 +8,7 @@ Stew and Brew is a dual purposed website that allows you to search for recipes t
 
 ## Screenshot
 
-![Screenshot of deployed project](/assets/images/Stew_and_Brew.png)
+![Screenshot of deployed project](/assets/images/stew-brew.png)
 
 ## Link to Deployed Site
 
