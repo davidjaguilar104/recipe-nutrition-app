@@ -192,7 +192,7 @@ var displayBreweryCard = function() {
 
     
     function nextImage() {
-        var imageCard = document.getElementById("drink-card");
+        var imageCard = document.getElementById("breweryContainer");
         var imgArray = new Array(20);
     imgArray[0] = new Image();
     imgArray[0].src = 'assets/images/carlos-blanco-WzPdP9pn7go-unsplash_2.jpg';
@@ -240,6 +240,19 @@ var displayBreweryCard = function() {
     for(var i = 0; i < imgArray.length; i++) {
             drinkCard.appendChild(imgArray[i]);
         }
+        
+        if(imgArray[i].src == img.src) {
+                
+            if(i === imgArray.length) {
+                document.getElementById("picture").src = imgArray[0].src;
+                break;
+            }
+            document.getElementById("picture").src = imgArray[i+1].src;
+            break;
+
+            document.getElementById('picture').append(imgArray);
+        }
+
         console.log(drinkCard);
     }
 
