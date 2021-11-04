@@ -167,7 +167,7 @@ var displayBreweryCard = function() {
                 var doc = new DOMParser()
                 var cardHTML = `
                 <div class="column is-one-third">
-                    <div class="card" id="drink-card">
+                    <div class="card">
                         <div class="card-content">
                             <p class="title">${brewery.name}</p>
                             <p class="sub-title">${brewery.street}</p>
@@ -191,9 +191,8 @@ var displayBreweryCard = function() {
     }
 
     
-    function nextImage() {
-        var imageCard = document.getElementById("breweryContainer");
-        var imgArray = new Array(20);
+    var imgArray = new Array();
+
     imgArray[0] = new Image();
     imgArray[0].src = 'assets/images/carlos-blanco-WzPdP9pn7go-unsplash_2.jpg';
     imgArray[1] = new Image();
@@ -237,26 +236,25 @@ var displayBreweryCard = function() {
     imgArray[20] = new Image();
     imgArray[20].src = 'assets/images/roberta-keiko-kitahara-santana-RfL3l-I1zhc-unsplash (1).jpg';
        
+    function nextImage(breweryContainer) {
+        var imageCard = document.getElementById("breweryContainer");
+
     for(var i = 0; i < imgArray.length; i++) {
-            drinkCard.appendChild(imgArray[i]);
-        }
-        
         if(imgArray[i].src == img.src) {
                 
             if(i === imgArray.length) {
-                document.getElementById("picture").src = imgArray[0].src;
+                document.getElementById("breweryContainer").src = imgArray[0].src;
                 break;
             }
-            document.getElementById("picture").src = imgArray[i+1].src;
+            document.getElementById("breweryContainer").src = imgArray[i+1].src;
             break;
 
-            document.getElementById('picture').append(imgArray);
+            document.getElementById("breweryContainer").append(imgArray);
         }
 
-        console.log(drinkCard);
     }
 
-nextImage();
+nextImage(breweryContainer);
 
 };
 
