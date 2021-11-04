@@ -59,7 +59,7 @@ header p {
   }
 }
 
-@media screen and (max-width: 321px) {
+@media screen and (max-width: 320px) {
   header {
     display: flex;
     flex-direction: column;
