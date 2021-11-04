@@ -50,3 +50,20 @@ header p {
 .save-btn {
   font-family: "Pathway Gothic One", sans-serif;
 }
+
+@media screen and (max-width: 768px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 321px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+  }
+}
