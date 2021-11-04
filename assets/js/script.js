@@ -249,7 +249,7 @@ var displayBreweryCard = function() {
             document.getElementById("breweryContainer").src = imgArray[i+1].src;
             break;
 
-            document.getElementById("breweryContainer").append(imgArray);
+            breweryContainer.append(imgArray);
         }
 
     }
