@@ -9,7 +9,7 @@ var moreRecipes = document.getElementById("moreRecipes")
 var foodResults = [];
 var foodResultsIndex = 0 //tracks index of the foodResults array so we can add more cards onto the page
 var foodResultsCount = 3 //this tracks the amount of cards on the page
-
+var savedRecipes = [];
 
 var savedRecipes = [];
 
@@ -100,7 +100,10 @@ var generateCards = function() {
                 var card = doc.parseFromString(cardHTML, "text/html")
                 resultsContainer.appendChild(card.body.firstChild)
                 foodResultsIndex++
+
+
             }
+
         }
         foodResultsCount+=3
     } else {
@@ -211,20 +214,22 @@ var displayBreweryCard = function() {
 
 
 
-
 var modal = document.getElementById("saved-recipe-modal");
 var modalBtn = document.getElementById("saved-recipes");
 var closeModal = document.getElementsByClassName("close")[0];
+var recipeUl = document.getElementById("saved-recipe-list");
+
 
 var updateRecipeList = function() {
+    recipeUl.innerHTML = "";
     for (var i = 0; i < savedRecipes.length; i++) {
-        var recipeUl = document.getElementById("saved-recipe-list");
+
         var listItem = document.createElement("li");
         listItem.innerHTML = "<a href=" + savedRecipes[i].website + ">" + savedRecipes[i].recipe; + "</a>";
         recipeUl.appendChild(listItem);
-        i++;
     }
 }
+
 
 modalBtn.onclick = function() {
     modal.style.display = "block";
@@ -279,7 +284,56 @@ document.addEventListener("click", function(event) {
 });
 
 
+modalBtn.onclick = function() {
+    modal.style.display = "block";
+    updateRecipeList();
+};
 
+closeModal.onclick = function() {
+    modal.style.display = "none";
+};
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    };
+};
+
+var saveRecipeHandler = function() {
+    localStorage.setItem("savedRecipes", JSON.stringify(savedRecipes));
+};
+
+var loadRecipes = function() {
+    var loadedRecipes = JSON.parse(localStorage.getItem("savedRecipes"));
+    if (!loadedRecipes) {
+        return false;
+    } else {
+    savedRecipes = loadedRecipes;
+    };
+};
+
+loadRecipes();
+
+document.addEventListener("click", function(event) {
+    if (event.target && event.target.id === "save-btn") {
+        var savedRecipe = event.target.parentNode.innerHTML;
+        var title = savedRecipe.substring(
+            savedRecipe.indexOf(">") + 1,
+            savedRecipe.lastIndexOf("</p>")
+        );
+        var link = savedRecipe.substring(
+            savedRecipe.indexOf('href="') + 6,
+            savedRecipe.lastIndexOf('" class="button recipe')
+        )
+        var clickedRecipe = {
+            recipe: title,
+            website: link
+        }
+        savedRecipes.push(clickedRecipe);
+        saveRecipeHandler();
+    }
+
+});
 
 moreRecipes.addEventListener("click", function(event) {
     event.preventDefault();
