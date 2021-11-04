@@ -168,9 +168,9 @@ var displayBreweryCard = function() {
                 var cardHTML = `
                 <div class="column is-one-third">
                     <div class="card">
-                    <figure class="image is-4by3" id="card">
-                    <img src="newImage" alt="">
-                    </figure>
+                        <figure class="image middle-tile">
+                            <img src="./assets/images/image1.jpg" alt=" ">
+                        </figure>
                         <div class="card-content">
                             <p class="title">${brewery.name}</p>
                             <p class="sub-title">${brewery.street}</p>
@@ -195,7 +195,7 @@ var displayBreweryCard = function() {
 
     function getImgArray() {
 
-    var imgArray = newArray();
+    var imgArray = new Array();
 
     imgArray[0] = 'assets/images/image1.jpg';
     imgArray[1] = 'assets/images/image2.jpg';
@@ -219,32 +219,21 @@ var displayBreweryCard = function() {
     imgArray[19] = 'assets/images/image20.jpg';
     imgArray[20] = 'assets/images/image21.jpg';
     
-    var arrayLength = imgArray.length;
-    var newArray = [];
-    
-    for (var i = 0; i < arrayLength; i++) {
-        newArray[i] = new Image();
-        newArray[i].src = imgArray[i];
 
-    }
 
-    function getRandomNum(min, max) {
-        imgNo = Math.floor(Math.random() * (max - min + 1)) + min;
-        return newArray[imgNo];
+    var rnd = Math.floor(Math.random() * imgArray.length); 
 
-    }
+    var img = new Image();
+    img.src = imgArray[rnd];
 
-    var newImage = getRandomNum(0, newArray.length - 1);
+    document.getElementById("image").appendChild(img);
 
-    document.card.appendChild(newImage);
+    };
 
-  
-
+    getImgArray();
 
 };
 
-
-getImgArray();
 
 
 
@@ -262,3 +251,4 @@ moreDrinks.addEventListener("click", function(event){
 
 userFormEl.addEventListener("submit", formSubmitHandler);
 userFormBreweryEl.addEventListener("submit", breweryFormSubmitHandler);
+
