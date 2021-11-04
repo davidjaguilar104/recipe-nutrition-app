@@ -215,22 +215,21 @@ var displayBreweryCard = function() {
 var modal = document.getElementById("saved-recipe-modal");
 var modalBtn = document.getElementById("saved-recipes");
 var closeModal = document.getElementsByClassName("close")[0];
-
 var recipeUl = document.getElementById("saved-recipe-list");
 
 var updateRecipeList = function() {
-    recipeUl.textContent = "";
+    recipeUl.innerHTML = "";
     for (var i = 0; i < savedRecipes.length; i++) {
 
         var listItem = document.createElement("li");
         listItem.innerHTML = "<a href=" + savedRecipes[i].website + ">" + savedRecipes[i].recipe; + "</a>";
         recipeUl.appendChild(listItem);
-        i++;
     }
 }
 
 modalBtn.onclick = function() {
     modal.style.display = "block";
+    updateRecipeList();
 };
 
 closeModal.onclick = function() {
@@ -245,7 +244,6 @@ window.onclick = function(event) {
 
 var saveRecipeHandler = function() {
     localStorage.setItem("savedRecipes", JSON.stringify(savedRecipes));
-    updateRecipeList();
 };
 
 var loadRecipes = function() {
@@ -255,7 +253,6 @@ var loadRecipes = function() {
     } else {
     savedRecipes = loadedRecipes;
     };
-    updateRecipeList();
 };
 
 loadRecipes();
