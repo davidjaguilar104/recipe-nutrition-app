@@ -19,23 +19,21 @@
     <title>Stew and Brew</title>
   </head>
   <body>
-    <!-- header section -->
-    <header>
-      <h1 class="is-size-1">Stew and Brew</h1>
-      <p class="has-text-black">Find great food recipes and local breweries!</p>
-      <button id="saved-recipes" class="button">Saved Recipes</button>
+
+
+    <header class="is-flex is-justify-content-space-between has-background-black">
+      <h1 class="is-size-1 has-text-white">Stew and Brew</h1>
+      <p class="has-text-white">Find great food recipes and local breweries!</p>
+      <button id="saved-recipes" class="button has-background-warning-dark has-text-white">Saved Recipes</button>
     </header>
+
     <!--hero-->
-    <section
-      id="hero-parallax"
-      class="is-flex is-flex-direction-column is-justify-content-center"
-    ></section>
+    <section id="hero-parallax" class="is-flex is-flex-direction-column is-justify-content-center"></section>
+    
     <!-- search bar for food section -->
-    <section
-      class="is-flex is-justify-content-center has-background-primary mb-5"
-    >
+    <section class="is-flex is-justify-content-center has-background-black mb-5">
       <form id="user-form" class="has-text-centered">
-        <label for="food-search" class="is-size-2 has-text-black"
+        <label for="food-search" class="is-size-2 has-text-white"
           >Enter a food item and find a recipe:
         </label>
         <input
@@ -127,9 +125,8 @@
           </select>
         </div>
         <button
-          class="button button is-warning is-light is-size-5"
-          type="submit"
-        >
+          class="button button has-background-warning-dark has-text-white is-size-5 path-font"
+          type="submit">
           Find Recipe
         </button>
       </form>
@@ -148,12 +145,10 @@
     </section>
 
     <!-- search bar for brewery section -->
-    <section
-      class="is-flex is-justify-content-center has-background-primary mb-5"
-    >
+    <section class="is-flex is-justify-content-center has-background-black mb-5">
       <form id="user-form-brewery" class="has-text-centered">
-        <label for="city-search" class="is-size-2 has-text-black"
-          >Enter a city and find a brewery near you:
+        <label for="city-search" class="is-size-2 has-text-white">
+          Enter a city and find a brewery near you:
         </label>
         <input
           id="city-search"
@@ -171,9 +166,8 @@
           </select>
         </div>
         <button
-          class="button button is-warning is-light is-size-5"
-          type="submit"
-        >
+          class="button button has-background-warning-dark has-text-white is-size-5 path-font"
+          type="submit">
           Find Brewery
         </button>
       </form>
@@ -191,12 +185,15 @@
       </div>
     </section>
 
+
+<!-- save recipe modal -->
     <div id="saved-recipe-modal" class="modal">
       <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
           <p class="modal-card-title">Saved Recipes</p>
         </header>
+
         <section id="saved-recipe-container" class="modal-card-body">
           <ul id="saved-recipe-list">
           </ul>
