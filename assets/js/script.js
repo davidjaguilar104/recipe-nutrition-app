@@ -216,9 +216,12 @@ var modal = document.getElementById("saved-recipe-modal");
 var modalBtn = document.getElementById("saved-recipes");
 var closeModal = document.getElementsByClassName("close")[0];
 
+var recipeUl = document.getElementById("saved-recipe-list");
+
 var updateRecipeList = function() {
+    recipeUl.textContent = "";
     for (var i = 0; i < savedRecipes.length; i++) {
-        var recipeUl = document.getElementById("saved-recipe-list");
+
         var listItem = document.createElement("li");
         listItem.innerHTML = "<a href=" + savedRecipes[i].website + ">" + savedRecipes[i].recipe; + "</a>";
         recipeUl.appendChild(listItem);
