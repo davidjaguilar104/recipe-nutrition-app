@@ -168,6 +168,9 @@ var displayBreweryCard = function() {
                 var cardHTML = `
                 <div class="column is-one-third">
                     <div class="card">
+                    <figure class="image is-4by3" id="card">
+                    <img src="newImage" alt="">
+                    </figure>
                         <div class="card-content">
                             <p class="title">${brewery.name}</p>
                             <p class="sub-title">${brewery.street}</p>
@@ -190,76 +193,58 @@ var displayBreweryCard = function() {
         breweryContainer.innerHTML = "<p class='has-text-centered'>No Results Found</p>"
     }
 
+    function getImgArray() {
+
+    var imgArray = newArray();
+
+    imgArray[0] = 'assets/images/image1.jpg';
+    imgArray[1] = 'assets/images/image2.jpg';
+    imgArray[2] = 'assets/images/image3.jpg';
+    imgArray[3] = 'assets/images/image4.jpg';
+    imgArray[4] = 'assets/images/image5.jpg';
+    imgArray[5] = 'assets/images/image6.jpg';
+    imgArray[6] = 'assets/images/image7.jpg';
+    imgArray[7] = 'assets/images/image8.jpg';
+    imgArray[8] = 'assets/images/image9.jpg';    
+    imgArray[9] = 'assets/images/image10.jpg';
+    imgArray[10] = 'assets/images/image11.jpg';
+    imgArray[11] = 'assets/images/image12.jpg';
+    imgArray[12] = 'assets/images/image13.jpg';
+    imgArray[13] = 'assets/images/image14.jpg';
+    imgArray[14] = 'assets/images/image15.jpg';
+    imgArray[15] = 'assets/images/image16.jpg';
+    imgArray[16] = 'assets/images/image17.jpg';
+    imgArray[17] = 'assets/images/image18.jpg';
+    imgArray[18] = 'assets/images/image19.jpg';
+    imgArray[19] = 'assets/images/image20.jpg';
+    imgArray[20] = 'assets/images/image21.jpg';
     
-    var imgArray = new Array();
-
-    imgArray[0] = new Image();
-    imgArray[0].src = 'assets/images/carlos-blanco-WzPdP9pn7go-unsplash_2.jpg';
-    imgArray[1] = new Image();
-    imgArray[1].src = 'assets/images/drew-farwell-9RLk3ZpulUk-unsplash (1).jpg';
-    imgArray[2] = new Image();
-    imgArray[2].src = 'assets/images/elevate-8LlEY7DEvWo-unsplash (1).jpg';
-    imgArray[3] = new Image();
-    imgArray[3].src = 'assets/images/elevate-Cdq3ziSoeGY-unsplash_2.jpg';
-    imgArray[4] = new Image();
-    imgArray[4].src = 'assets/images/elevate-KJzrLIfq2Zo-unsplash (1).jpg';
-    imgArray[5] = new Image();
-    imgArray[5].src = 'assets/images/fred-moon-0yqa0rMCsYk-unsplash (1).jpg';
-    imgArray[6] = new Image();
-    imgArray[6].src = 'assets/images/iwona-castiello-d-antonio-PPlopyFtwFM-unsplash (1).jpg';
-    imgArray[7] = new Image();
-    imgArray[7].src = 'assets/images/jesse-martini-LnGUREkDuAM-unsplash (1).jpg';
-    imgArray[8] = new Image();
-    imgArray[8].src = 'assets/images/jim-harris-zDlusnb3G3Q-unsplash_2.jpg';    
-    imgArray[9] = new Image();
-    imgArray[9].src = 'assets/images/josh-olalde-5PGp5nDOKxI-unsplash_2.jpg';
-    imgArray[10] = new Image();
-    imgArray[10].src = 'assets/images/katherine-conrad-QL3SaEwio_k-unsplash (1).jpg';
-    imgArray[11] = new Image();
-    imgArray[11].src = 'assets/images/kevin-kristhian-29zMpabSkXo-unsplash (1).jpg';
-    imgArray[12] = new Image();
-    imgArray[12].src = 'assets/images/louis-hansel-WCm4dFvZnMM-unsplash_1.jpg';
-    imgArray[13] = new Image();
-    imgArray[13].src = 'assets/images/marco-montero-pisani-5qTxX7nicco-unsplash_2.jpg';
-    imgArray[14] = new Image();
-    imgArray[14].src = 'assets/images/martin-knize-DQpHtE5WY-U-unsplash.jpg';
-    imgArray[15] = new Image();
-    imgArray[15].src = 'assets/images/meritt-thomas-2UsNF4Az-Ko-unsplash_1.jpg';
-    imgArray[16] = new Image();
-    imgArray[16].src = 'assets/images/meritt-thomas-OGTEP0LyYNk-unsplash (1).jpg';
-    imgArray[17] = new Image();
-    imgArray[17].src = 'assets/images/meritt-thomas-OGTEP0LyYNk-unsplash_1.jpg';
-    imgArray[18] = new Image();
-    imgArray[18].src = 'assets/images/miguel-angel-cardona-jr-yFHJga68toQ-unsplash_2.jpg';
-    imgArray[19] = new Image();
-    imgArray[19].src = 'assets/images/nick-hillier-xBXF9pr6LQo-unsplash_1.jpg';
-    imgArray[20] = new Image();
-    imgArray[20].src = 'assets/images/roberta-keiko-kitahara-santana-RfL3l-I1zhc-unsplash (1).jpg';
-       
-    function nextImage(breweryContainer) {
-        var imageCard = document.getElementById("breweryContainer");
-
-    for(var i = 0; i < imgArray.length; i++) {
-        if(imgArray[i].src == img.src) {
-                
-            if(i === imgArray.length) {
-                document.getElementById("breweryContainer").src = imgArray[0].src;
-                break;
-            }
-            document.getElementById("breweryContainer").src = imgArray[i+1].src;
-            break;
-
-            breweryContainer.append(imgArray);
-        }
+    var arrayLength = imgArray.length;
+    var newArray = [];
+    
+    for (var i = 0; i < arrayLength; i++) {
+        newArray[i] = new Image();
+        newArray[i].src = imgArray[i];
 
     }
 
-nextImage(breweryContainer);
+    function getRandomNum(min, max) {
+        imgNo = Math.floor(Math.random() * (max - min + 1)) + min;
+        return newArray[imgNo];
+
+    }
+
+    var newImage = getRandomNum(0, newArray.length - 1);
+
+    document.card.appendChild(newImage);
+
+  
+
 
 };
 
 
-
+getImgArray();
 
 
 
