@@ -169,7 +169,7 @@ var displayBreweryCard = function() {
                 <div class="column is-one-third">
                     <div class="card">
                         <figure class="image middle-tile">
-                            <img src="./assets/images/image1.jpg" alt=" ">
+                            <img src="${getRandomImageSource()}" alt=" ">
                         </figure>
                         <div class="card-content">
                             <p class="title">${brewery.name}</p>
@@ -193,44 +193,24 @@ var displayBreweryCard = function() {
         breweryContainer.innerHTML = "<p class='has-text-centered'>No Results Found</p>"
     }
 
-    function getImgArray() {
-
-    var imgArray = new Array();
-
-    imgArray[0] = 'assets/images/image1.jpg';
-    imgArray[1] = 'assets/images/image2.jpg';
-    imgArray[2] = 'assets/images/image3.jpg';
-    imgArray[3] = 'assets/images/image4.jpg';
-    imgArray[4] = 'assets/images/image5.jpg';
-    imgArray[5] = 'assets/images/image6.jpg';
-    imgArray[6] = 'assets/images/image7.jpg';
-    imgArray[7] = 'assets/images/image8.jpg';
-    imgArray[8] = 'assets/images/image9.jpg';    
-    imgArray[9] = 'assets/images/image10.jpg';
-    imgArray[10] = 'assets/images/image11.jpg';
-    imgArray[11] = 'assets/images/image12.jpg';
-    imgArray[12] = 'assets/images/image13.jpg';
-    imgArray[13] = 'assets/images/image14.jpg';
-    imgArray[14] = 'assets/images/image15.jpg';
-    imgArray[15] = 'assets/images/image16.jpg';
-    imgArray[16] = 'assets/images/image17.jpg';
-    imgArray[17] = 'assets/images/image18.jpg';
-    imgArray[18] = 'assets/images/image19.jpg';
-    imgArray[19] = 'assets/images/image20.jpg';
-    imgArray[20] = 'assets/images/image21.jpg';
-    
-
-
-    var rnd = Math.floor(Math.random() * imgArray.length); 
-
-    var img = new Image();
-    img.src = imgArray[rnd];
-
-    document.getElementById("image").appendChild(img);
+    function getRandomImageSource() {
+        //set string for return value
+        var toReturn = ''; 
+        //set file name structure
+        var IMAGE_DIRECTORY = './assets/images/';
+        //add image format type to IMAGE_DIRECTORY return
+        var IMAGE_FORMAT = '.jpg';
+        //we need to pick a number between one and 21
+        var randomNumber = Math.ceil(Math.random()*21 + 1);
+        // combine file name image with randome number
+        var fileName = "image" + randomNumber;
+        // combine the three variables for result
+        toReturn = IMAGE_DIRECTORY + fileName + IMAGE_FORMAT;
+        return toReturn;
 
     };
 
-    getImgArray();
+
 
 };
 
