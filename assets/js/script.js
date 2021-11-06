@@ -160,8 +160,6 @@ var breweryFormSubmitHandler = function(event) {
     });
 };
 
-// IN THE DISPLAY CARDS A LOOP WILL BE BETTER THAN ALL THE REPEATED CODE
-// need to loop through data and display different object properties at different indexes of array returned from API
 
 var breweryResults = [];
 var breweryResultsIndex = 0 //tracks index of the breweryResults array so we can add more cards onto the page
@@ -183,7 +181,10 @@ var displayBreweryCard = function() {
                 var doc = new DOMParser()
                 var cardHTML = `
                 <div class="column is-one-third">
-                    <div class="card"
+                    <div class="card">
+                        <figure class="image middle-tile">
+                            <img src="${getRandomImageSource()}" alt=" ">
+                        </figure>
                         <div class="card-content">
                             <p class="title">${brewery.name}</p>
                             <p class="sub-title">${brewery.street}</p>
@@ -209,10 +210,23 @@ var displayBreweryCard = function() {
         breweryContainer.appendChild(noResultsEl);
         moreDrinks.classList.toggle("is-hidden");
     }
-    
-};
 
+    function getRandomImageSource() {
+        //set string for return value
+        var toReturn = ''; 
+        //set file name structure
+        var IMAGE_DIRECTORY = './assets/images/';
+        //add image format type to IMAGE_DIRECTORY return
+        var IMAGE_FORMAT = '.jpg';
+        //we need to pick a number between one and 21
+        var randomNumber = Math.ceil(Math.random()*21 + 1);
+        // combine file name image with randome number
+        var fileName = "image" + randomNumber;
+        // combine the three variables for result
+        toReturn = IMAGE_DIRECTORY + fileName + IMAGE_FORMAT;
+        return toReturn;
 
+    };
 
 var modal = document.getElementById("saved-recipe-modal");
 var modalBtn = document.getElementById("saved-recipes");
@@ -246,8 +260,6 @@ window.onclick = function(event) {
     };
 };
 
-var saveRecipeHandler = function() {
-    localStorage.setItem("savedRecipes", JSON.stringify(savedRecipes));
 };
 
 var loadRecipes = function() {
@@ -296,3 +308,4 @@ moreDrinks.addEventListener("click", function(event){
 
 userFormEl.addEventListener("submit", formSubmitHandler);
 userFormBreweryEl.addEventListener("submit", breweryFormSubmitHandler);
+
